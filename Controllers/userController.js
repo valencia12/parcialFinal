@@ -16,5 +16,17 @@ userController.store = async function (req, res, next) {
 }
 //eliminar usuario 
 userController.delete = async function(req, res, next){
-    
+    let {id} = req.params;
+    await user.remove({_id:id});
+    res.status(200).json({"message": "Dato eliminado"});
+}
+
+module.exports = userController;
+//editar datos
+userController.update = async function(req, res, next){
+    let {id} = req.params;
+    let user = {
+        nombre: req.body.user,
+        cadena: req.body.rol
+    }
 }
